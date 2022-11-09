@@ -4,7 +4,7 @@ import numpy as np
 def sum_f_odd(N):
     sum = 0
     count = 1
-    for i in N:
+    for i in range(N):
         sum = sum + (2*count - 1)
         count = count + 1
     return sum
