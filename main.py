@@ -1,26 +1,42 @@
+import wave
 import numpy as np
-from sklearn.metrics import mean_squared_error
-from MSE import *
-from SUM_first_odd import *
-Y_pred = np.array([1, 3, 5, 7, 9])
-Y_act = np.array([2, 4, 6, 8, 10])
+from scipy.io import wavfile
 
-mse = MSE(Y_act, Y_pred)
-test_mse = mean_squared_error(Y_act, Y_pred)
-print("MSE is")
-print(mse)
-print("Validation MSE using builting function is")
-print(test_mse)
-if test_mse == mse:
-    print("MSE working")
+from Median_filter import *
+
+text_file = open("bk.txt", "r")
+bk = np.array(text_file.read().split(',')).astype(int)
+
+d_samplerate, d_data = wavfile.read('degraded.wav')
+clean_samplerate, clean_data = wavfile.read('myclean.wav')
+#print(d_samplerate)
+#print(np.size(d_data))
+#print(np.size(clean_data))
+#print(bk)
+d_data = d_data/32767
+clean_data = clean_data/32767
+#print(d_data)
+res_data = d_data
+window_size = 21
+
+odd_list = [int(x) for x in f_odd(15)]
+MSE_list = []
 
 
-sum = sum_f_odd(5)
+for j in range(len(odd_list)):
 
-test_sum = np.sum([1, 3, 5, 7, 9])
-print("The sum of the first 5 odd numbers is")
-print(sum)
-print("Validation sum by explicitly defining first 5 odd number is")
-print(test_sum)
-if test_sum == sum:
-    print("Odd function working")
+    window_size = odd_list[j]
+
+    for i in range(np.size(d_data)):
+        if (bk[i] == 1):
+            res_data[i - 10 : i + 10] = median_fil(res_data[i - 10 : i + 10], window_length=window_size)
+            #print(res_data[i - 10 : i + 10])
+            #print(np.size(res_data[i - 10 : i + 10]))
+
+    MSE = np.square(np.subtract(clean_data, res_data)).mean()
+    MSE_list = np.append(MSE_list, MSE)
+
+
+print(MSE_list)
+
+
