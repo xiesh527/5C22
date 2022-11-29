@@ -1,4 +1,4 @@
-# Add here a title for the project
+# Comparison between Cubic Spline Filter and Median Filter
 
 ## Table of Content
 1. [High-level Description of the project](#my-first-title)
