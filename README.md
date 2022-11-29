@@ -22,8 +22,6 @@ Using the detected clips index as a prior knowledge, both filters were applied t
         S_window = sort(window)
         m_value = median(S_window)
         data = m_value
-    '''
-
 ---
 
 ## Installation and Execution
