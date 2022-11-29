@@ -134,14 +134,14 @@ Describe here how you have designed your code, e.g. a main script/routine that c
 ---
 **Results**
 1. The sample output from both filters is attached below:
-<img src="sample.png" width="350">
+<img src="sample.PNG" width="350">
 
 From which we can observe both filters did quite good elimination on the damaged signal, yet still some clips are not fully removed.
 
 2. As for the experiment exploring different window sizes' influence on the performance for both filters, 
 the following result is observed:
 
-<img src="compare.png" width="350">
+<img src="compare.PNG" width="350">
 
 It is noticeable that, Median Filter's MSE initially droped as the window size increasing, whereas it gradually grows as the window gets larger than 15 and finally converges. While CSF's performance quickly drops when windows grows from small length, and this trend is slowed down as window becomes even bigger, its log10 value saturated as -9, which agrees with the result from global CSF(Taking the whole signal as the window).
 
@@ -160,4 +160,4 @@ MSE_window_length (window->length(signal)) = MSE_global
 ## Appendics
 More sample results
 
-<img src="more.png" width="350">
+<img src="more.PNG" width="350">
