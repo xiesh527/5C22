@@ -16,12 +16,13 @@ Using the detected clips index as a prior knowledge, both filters were applied t
 
 1) Median Filter:
     Median filter would sort the whole sequence in order of magnitude, obtain the middle element i.e. Median(which requires an odd number of data points), and replace the detected clips by the median. Its logic could be intuitively written as:
-    '''
+    ```
     for data in signal:
         window = signal[sequence(data) - span : sequence(data) + span]#span is half of (window's length - 1)
         S_window = sort(window)
         m_value = median(S_window)
         data = m_value
+    ```
 ---
 
 ## Installation and Execution
